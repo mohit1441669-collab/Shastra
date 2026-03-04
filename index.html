@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shastra — Complete Ancient Indian Texts</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --saffron:#E8721A; --gold:#C9922A; --gold-light:#E8B84B;
+  --cream:#F5EDD6; --parchment:#EDE0C0;
+  --dark-brown:#1A100A; --warm-brown:#2C180C;
+  --ink:#0C0603; --muted:#8B6E52; --red-tilak:#8B1A1A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink);color:var(--cream);font-family:'Crimson Pro',Georgia,serif;font-weight:300;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;opacity:0.6;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;background:linear-gradient(to bottom,rgba(12,6,3,0.98),transparent);border-bottom:1px solid rgba(201,146,42,0.08);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--gold-light);letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;}
+.nav-logo small{display:block;font-size:0.55rem;letter-spacing:0.45em;color:var(--muted);font-weight:300;font-style:italic;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.3s;}
+.nav-links a:hover{color:var(--gold-light);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 5rem;position:relative;overflow:hidden;}
+.hero-orb{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(ellipse,rgba(201,146,42,0.06) 0%,transparent 65%);pointer-events:none;}
+.hero-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:650px;height:650px;border-radius:50%;border:1px solid rgba(201,146,42,0.06);animation:spin 80s linear infinite;}
+.hero-ring::before{content:'';position:absolute;inset:50px;border-radius:50%;border:1px solid rgba(232,114,26,0.04);}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+.hero-om{font-family:'Noto Serif Devanagari',serif;font-size:5rem;color:rgba(201,146,42,0.12);margin-bottom:1rem;animation:fade-in 1.5s 0.2s both;}
+.hero-sanskrit-tag{font-family:'Noto Serif Devanagari',serif;font-size:1rem;color:var(--gold);letter-spacing:0.08em;margin-bottom:2rem;animation:fade-up 1s 0.4s both;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,9vw,8.5rem);font-weight:300;line-height:0.88;margin-bottom:1.5rem;animation:fade-up 1s 0.6s both;}
+.hero-title em{display:block;font-style:italic;color:var(--gold-light);}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:580px;line-height:1.9;margin-bottom:3rem;animation:fade-up 1s 0.8s both;}
+.hero-badge{display:inline-flex;align-items:center;gap:0.6rem;padding:0.6rem 1.5rem;border:1px solid rgba(201,146,42,0.3);font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(232,184,75,0.7);animation:fade-up 1s 1s both;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:var(--saffron);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:0.4;}50%{opacity:1;}}
+.hero-cta{display:inline-flex;align-items:center;gap:1rem;padding:1rem 2.5rem;border:1px solid rgba(201,146,42,0.4);color:var(--gold-light);text-decoration:none;font-size:0.78rem;letter-spacing:0.3em;text-transform:uppercase;transition:all 0.4s;animation:fade-up 1s 1.1s both;margin-top:1.5rem;position:relative;overflow:hidden;}
+.hero-cta::before{content:'';position:absolute;inset:0;background:rgba(201,146,42,0.08);transform:translateX(-101%);transition:transform 0.4s;}
+.hero-cta:hover::before{transform:translateX(0);}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fade-in{from{opacity:0;}to{opacity:1;}}
+
+/* TEXTS LIBRARY */
+.library{padding:7rem 3rem;background:var(--warm-brown);position:relative;}
+.library::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,146,42,0.4),transparent);}
+.lib-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:2rem;}
+.lib-filters{display:flex;border:1px solid rgba(201,146,42,0.2);}
+.lib-filter{padding:0.55rem 1.2rem;font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);cursor:pointer;background:none;border:none;border-right:1px solid rgba(201,146,42,0.2);font-family:'Crimson Pro',serif;transition:all 0.3s;}
+.lib-filter:last-child{border-right:none;}
+.lib-filter.on{background:rgba(201,146,42,0.14);color:var(--gold-light);}
+.lib-filter:hover:not(.on){color:var(--cream);}
+
+.texts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1px;background:rgba(201,146,42,0.07);}
+.text-card{background:var(--warm-brown);padding:2.2rem;cursor:pointer;transition:background 0.3s;position:relative;border-left:3px solid transparent;}
+.text-card:hover{background:rgba(201,146,42,0.05);border-left-color:var(--saffron);}
+.tc-tag{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.5rem;}
+.tc-name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:400;color:var(--cream);line-height:1.1;margin-bottom:0.3rem;}
+.tc-dev{font-family:'Noto Serif Devanagari',serif;font-size:0.85rem;color:var(--gold);margin-bottom:0.9rem;display:block;}
+.tc-desc{font-size:0.88rem;color:var(--muted);line-height:1.8;margin-bottom:1.2rem;}
+.tc-meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.tc-meta span{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(139,110,82,0.55);}
+.tc-meta strong{color:rgba(201,146,42,0.55);font-weight:400;}
+.tc-btn{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,146,42,0.25);padding:0.45rem 1.1rem;transition:all 0.3s;}
+.text-card:hover .tc-btn{background:rgba(201,146,42,0.1);border-color:var(--gold);}
+.tc-verse-count{position:absolute;top:1.5rem;right:1.5rem;font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(201,146,42,0.1);font-weight:300;}
+
+/* ═══════════ READER ═══════════ */
+.reader{position:fixed;inset:0;z-index:300;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);background:var(--ink);}
+.reader.open{transform:translateX(0);}
+
+.reader-topbar{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 2rem;border-bottom:1px solid rgba(201,146,42,0.12);background:rgba(12,6,3,0.95);backdrop-filter:blur(12px);flex-shrink:0;gap:1rem;flex-wrap:wrap;}
+.back-btn{display:flex;align-items:center;gap:0.6rem;color:var(--muted);cursor:pointer;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;background:none;border:none;font-family:'Crimson Pro',serif;transition:color 0.3s;flex-shrink:0;}
+.back-btn:hover{color:var(--gold-light);}
+.back-btn svg{width:15px;height:15px;}
+.rdr-text-info{text-align:center;flex:1;}
+.rdr-text-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--cream);}
+.rdr-text-dev{font-family:'Noto Serif Devanagari',serif;font-size:0.78rem;color:var(--gold);display:block;}
+.rdr-controls{display:flex;align-items:center;gap:1rem;flex-shrink:0;flex-wrap:wrap;}
+.rdr-search{background:rgba(201,146,42,0.06);border:1px solid rgba(201,146,42,0.2);color:var(--cream);font-family:'Crimson Pro',serif;font-size:0.88rem;padding:0.45rem 0.9rem;outline:none;transition:border 0.3s;width:180px;}
+.rdr-search:focus{border-color:rgba(201,146,42,0.5);}
+.rdr-search::placeholder{color:var(--muted);}
+
+/* Lang tabs */
+.lang-bar{display:flex;border-bottom:1px solid rgba(201,146,42,0.15);flex-shrink:0;background:rgba(12,6,3,0.5);}
+.lang-btn{padding:0.65rem 1.8rem;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--muted);background:none;border:none;border-bottom:2px solid transparent;font-family:'Crimson Pro',serif;cursor:pointer;transition:all 0.3s;margin-bottom:-1px;}
+.lang-btn.on{color:var(--gold-light);border-bottom-color:var(--saffron);}
+.lang-btn:hover:not(.on){color:var(--cream);}
+
+/* Body */
+.reader-body{display:flex;flex:1;overflow:hidden;}
+.rdr-sidebar{width:290px;flex-shrink:0;border-right:1px solid rgba(201,146,42,0.1);overflow-y:auto;background:rgba(12,6,3,0.3);}
+.rdr-sidebar::-webkit-scrollbar{width:3px;}
+.rdr-sidebar::-webkit-scrollbar-thumb{background:rgba(201,146,42,0.2);}
+.sidebar-info{padding:1.2rem 1.5rem;border-bottom:1px solid rgba(201,146,42,0.08);}
+.sidebar-info h4{font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--saffron);}
+.sidebar-info p{font-size:0.8rem;color:rgba(139,110,82,0.6);margin-top:0.2rem;}
+
+/* Chapter nav */
+.ch-header{padding:0.8rem 1.5rem;background:rgba(201,146,42,0.05);border-bottom:1px solid rgba(201,146,42,0.07);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--saffron);cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
+.ch-header:hover{background:rgba(201,146,42,0.08);}
+.verse-item{display:flex;align-items:flex-start;gap:0.8rem;padding:0.75rem 1.5rem;cursor:pointer;transition:background 0.2s;border-bottom:1px solid rgba(201,146,42,0.04);}
+.verse-item:hover{background:rgba(201,146,42,0.05);}
+.verse-item.active{background:rgba(201,146,42,0.1);border-left:2px solid var(--saffron);}
+.vi-num{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(201,146,42,0.35);min-width:2.2rem;padding-top:1px;flex-shrink:0;}
+.vi-preview{font-family:'Noto Serif Devanagari',serif;font-size:0.75rem;color:var(--muted);line-height:1.5;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.verse-item.active .vi-preview{color:var(--cream);}
+
+/* Main pane */
+.rdr-main{flex:1;overflow-y:auto;padding:2.5rem 3.5rem;}
+.rdr-main::-webkit-scrollbar{width:3px;}
+.rdr-main::-webkit-scrollbar-thumb{background:rgba(201,146,42,0.15);}
+
+/* Text overview panel */
+.text-overview{margin-bottom:3rem;padding:2rem;border:1px solid rgba(201,146,42,0.12);background:rgba(201,146,42,0.03);}
+.ov-title{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:0.3rem;}
+.ov-title em{font-style:italic;color:var(--gold-light);}
+.ov-dev{font-family:'Noto Serif Devanagari',serif;font-size:1rem;color:var(--gold);display:block;margin-bottom:1.2rem;}
+.ov-desc{font-size:0.95rem;color:var(--muted);line-height:1.9;max-width:70ch;}
+.ov-facts{display:flex;gap:2.5rem;flex-wrap:wrap;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(201,146,42,0.1);}
+.ov-fact label{display:block;font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,146,42,0.45);margin-bottom:0.3rem;}
+.ov-fact span{font-size:0.9rem;color:var(--cream);}
+
+/* Verse display — language panes */
+.verse-pane{display:none;}
+.verse-pane.active{display:block;}
+
+/* Loading */
+.verse-loading{text-align:center;padding:5rem 2rem;}
+.loading-spinner{width:40px;height:40px;border:1px solid rgba(201,146,42,0.2);border-top-color:var(--gold);border-radius:50%;animation:spin-fast 0.8s linear infinite;margin:0 auto 1.5rem;}
+@keyframes spin-fast{to{transform:rotate(360deg);}}
+.loading-text{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--muted);font-style:italic;}
+.loading-dev{font-family:'Noto Serif Devanagari',serif;font-size:0.85rem;color:rgba(201,146,42,0.4);margin-top:0.5rem;}
+
+/* Verse card */
+.verse-card{margin-bottom:0.5rem;}
+.vc-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.8rem;}
+.vc-num{font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:300;color:rgba(201,146,42,0.1);line-height:1;}
+.vc-ref{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--saffron);}
+.vc-subref{font-size:0.75rem;color:rgba(139,110,82,0.5);margin-top:0.2rem;}
+
+.lang-section{margin-bottom:3rem;}
+.lang-label{font-size:0.6rem;letter-spacing:0.38em;text-transform:uppercase;color:rgba(201,146,42,0.45);margin-bottom:1rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(201,146,42,0.08);}
+
+.v-sanskrit{font-family:'Noto Serif Devanagari',serif;font-size:1.45rem;line-height:2.1;color:var(--cream);}
+.v-translit{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.05rem;color:rgba(201,146,42,0.65);line-height:1.8;margin-top:0.7rem;}
+.v-hindi{font-family:'Noto Serif Devanagari',serif;font-size:1.15rem;line-height:2;color:var(--cream);}
+.v-hindi-meaning{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-top:0.8rem;padding-left:1rem;border-left:2px solid rgba(201,146,42,0.2);}
+.v-english{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:300;line-height:1.75;color:var(--cream);}
+.v-note{font-size:0.9rem;color:var(--muted);line-height:1.85;margin-top:1rem;padding:1rem 1.2rem;background:rgba(201,146,42,0.04);border-left:2px solid rgba(201,146,42,0.25);}
+
+/* All-three view */
+.triple-card{border:1px solid rgba(201,146,42,0.1);margin-bottom:2rem;overflow:hidden;}
+.triple-card-head{padding:0.8rem 1.5rem;background:rgba(201,146,42,0.06);border-bottom:1px solid rgba(201,146,42,0.1);font-size:0.6rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--saffron);}
+.triple-row{padding:1.5rem;border-bottom:1px solid rgba(201,146,42,0.07);}
+.triple-row:last-child{border-bottom:none;}
+.triple-row-lang{font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(201,146,42,0.4);margin-bottom:0.8rem;}
+
+/* Jump input */
+.jump-wrap{padding:0.8rem 1.5rem;border-bottom:1px solid rgba(201,146,42,0.08);}
+.jump-wrap label{font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:0.4rem;}
+.jump-input{display:flex;gap:0;}
+.jump-input input{flex:1;background:rgba(201,146,42,0.05);border:1px solid rgba(201,146,42,0.15);border-right:none;color:var(--cream);font-family:'Crimson Pro',serif;font-size:0.88rem;padding:0.4rem 0.7rem;outline:none;}
+.jump-input input::placeholder{color:var(--muted);}
+.jump-input button{padding:0.4rem 0.9rem;background:rgba(201,146,42,0.15);border:1px solid rgba(201,146,42,0.15);color:var(--gold);font-size:0.7rem;cursor:pointer;font-family:'Crimson Pro',serif;transition:background 0.2s;}
+.jump-input button:hover{background:rgba(201,146,42,0.25);}
+
+/* Error */
+.verse-error{text-align:center;padding:3rem;color:var(--muted);}
+.verse-error h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:rgba(201,146,42,0.3);margin-bottom:0.8rem;}
+
+/* Divider */
+.section-divider{height:1px;background:linear-gradient(to right,transparent,rgba(201,146,42,0.2),transparent);margin:3rem 0;}
+
+/* Quote strip */
+.quote-strip{padding:6rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.qs-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(201,146,42,0.04) 0%,transparent 70%);}
+.qs-mark{font-family:'Cormorant Garamond',serif;font-size:7rem;color:rgba(201,146,42,0.08);line-height:0.6;margin-bottom:2rem;}
+.qs-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:300;font-style:italic;color:var(--cream);max-width:780px;margin:0 auto 1.5rem;line-height:1.45;}
+.qs-src{font-size:0.75rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);}
+
+/* Search section */
+.search-sec{padding:4rem 3rem;background:rgba(201,146,42,0.03);border-top:1px solid rgba(201,146,42,0.08);border-bottom:1px solid rgba(201,146,42,0.08);}
+.search-wrap{max-width:650px;margin:2.5rem auto 0;}
+.search-row{display:flex;border:1px solid rgba(201,146,42,0.25);background:rgba(12,6,3,0.5);}
+.search-row:focus-within{border-color:rgba(201,146,42,0.55);}
+.search-row input{flex:1;padding:1.1rem 1.4rem;background:transparent;border:none;outline:none;color:var(--cream);font-family:'Crimson Pro',serif;font-size:1rem;}
+.search-row input::placeholder{color:var(--muted);}
+.search-row button{padding:1.1rem 1.8rem;background:rgba(201,146,42,0.12);border:none;border-left:1px solid rgba(201,146,42,0.25);color:var(--gold-light);cursor:pointer;font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;font-family:'Crimson Pro',serif;transition:background 0.3s;}
+.search-row button:hover{background:rgba(201,146,42,0.22);}
+.search-chips{display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:1.2rem;}
+.chip{padding:0.3rem 0.9rem;border:1px solid rgba(201,146,42,0.18);font-size:0.72rem;color:var(--muted);cursor:pointer;transition:all 0.3s;}
+.chip:hover{border-color:rgba(201,146,42,0.45);color:var(--gold-light);}
+
+/* Footer */
+footer{padding:4rem 3rem 2.5rem;border-top:1px solid rgba(201,146,42,0.08);}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.ft-brand{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold-light);margin-bottom:0.8rem;}
+.ft-tagline{font-size:0.85rem;color:var(--muted);line-height:1.8;max-width:260px;}
+.ft-col h5{font-size:0.62rem;letter-spacing:0.35em;text-transform:uppercase;color:var(--saffron);margin-bottom:1.2rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:0.7rem;}
+.ft-col a{font-size:0.88rem;color:var(--muted);text-decoration:none;transition:color 0.3s;}
+.ft-col a:hover{color:var(--cream);}
+.ft-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:1.8rem;border-top:1px solid rgba(201,146,42,0.07);font-size:0.72rem;color:rgba(139,110,82,0.4);}
+.ft-om{font-family:'Noto Serif Devanagari',serif;font-size:1.4rem;color:rgba(201,146,42,0.25);}
+
+/* Heading utils */
+.sec-label{font-size:0.68rem;letter-spacing:0.42em;text-transform:uppercase;color:var(--saffron);margin-bottom:0.8rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1.2rem;}
+.sec-title em{font-style:italic;color:var(--gold-light);}
+
+@media(max-width:900px){
+  nav{padding:1rem 1.5rem;}
+  .nav-links{display:none;}
+  .library,.quote-strip,.search-sec,footer{padding-left:1.5rem;padding-right:1.5rem;}
+  .texts-grid{grid-template-columns:1fr;}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  .reader-body{flex-direction:column;}
+  .rdr-sidebar{width:100%;height:220px;border-right:none;border-bottom:1px solid rgba(201,146,42,0.1);}
+  .rdr-main{padding:1.5rem;}
+  .triple-row{padding:1rem;}
+}
+@media(max-width:600px){
+  .ft-grid{grid-template-columns:1fr;}
+  .ov-facts{gap:1.5rem;}
+  .rdr-controls{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo" onclick="scrollTo(0,0)">Shastra<small>Complete Ancient Indian Texts</small></div>
+  <ul class="nav-links">
+    <li><a href="#library">Library</a></li>
+    <li><a href="#search">Search</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-ring"></div>
+  <div class="hero-om">ॐ</div>
+  <p class="hero-sanskrit-tag">॥ सत्यमेव जयते ॥</p>
+  <h1 class="hero-title">Ancient<em>Wisdom</em></h1>
+  <p class="hero-sub">Every verse. Every shloka. Every sutra. Read the complete ancient Indian texts in Sanskrit, Hindi, and English — powered by AI for unlimited access to the sacred literature.</p>
+  <div class="hero-badge"><span></span> AI-Powered · Complete Texts · All Verses</div>
+  <a href="#library" class="hero-cta">Enter the Library →</a>
+</section>
+
+<!-- LIBRARY -->
+<section class="library" id="library">
+  <div class="lib-head">
+    <div>
+      <p class="sec-label">Sacred Texts</p>
+      <h2 class="sec-title">The Complete <em>Library</em></h2>
+    </div>
+    <div class="lib-filters">
+      <button class="lib-filter on" onclick="filterTexts('all',this)">All</button>
+      <button class="lib-filter" onclick="filterTexts('Veda',this)">Vedas</button>
+      <button class="lib-filter" onclick="filterTexts('Upanishad',this)">Upanishads</button>
+      <button class="lib-filter" onclick="filterTexts('Epic',this)">Epics</button>
+      <button class="lib-filter" onclick="filterTexts('Purana',this)">Puranas</button>
+      <button class="lib-filter" onclick="filterTexts('Sutra',this)">Sutras</button>
+      <button class="lib-filter" onclick="filterTexts('Poetry',this)">Kavya</button>
+    </div>
+  </div>
+  <div class="texts-grid" id="textsGrid"></div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-strip">
+  <div class="qs-bg"></div>
+  <div class="qs-mark">"</div>
+  <p class="qs-text">From the unreal lead me to the real. From darkness lead me to light. From death lead me to immortality.</p>
+  <p class="qs-src">Brihadaranyaka Upanishad · 1.3.28</p>
+</section>
+
+<!-- SEARCH -->
+<section class="search-sec" id="search">
+  <div style="text-align:center">
+    <p class="sec-label">Explore</p>
+    <h2 class="sec-title">Search the <em>Collection</em></h2>
+  </div>
+  <div class="search-wrap">
+    <div class="search-row">
+      <input type="text" id="searchInput" placeholder="Search by text name, concept, tradition…" oninput="handleSearch()">
+      <button onclick="handleSearch()">Search</button>
+    </div>
+    <div class="search-chips">
+      <span class="chip" onclick="setSearch('dharma')">Dharma</span>
+      <span class="chip" onclick="setSearch('yoga')">Yoga</span>
+      <span class="chip" onclick="setSearch('brahman')">Brahman</span>
+      <span class="chip" onclick="setSearch('karma')">Karma</span>
+      <span class="chip" onclick="setSearch('moksha')">Moksha</span>
+      <span class="chip" onclick="setSearch('atman')">Atman</span>
+      <span class="chip" onclick="setSearch('creation')">Creation</span>
+      <span class="chip" onclick="setSearch('love')">Love</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div><div class="ft-brand">Shastra</div><p class="ft-tagline">A digital sanctuary for the study of ancient Indian wisdom. Every verse accessible, every shloka explained.</p></div>
+    <div class="ft-col"><h5>Vedic</h5><ul><li><a href="#">Rigveda</a></li><li><a href="#">Samaveda</a></li><li><a href="#">Yajurveda</a></li><li><a href="#">Atharvaveda</a></li></ul></div>
+    <div class="ft-col"><h5>Philosophy</h5><ul><li><a href="#">Upanishads</a></li><li><a href="#">Bhagavad Gita</a></li><li><a href="#">Yoga Sutras</a></li><li><a href="#">Brahma Sutras</a></li></ul></div>
+    <div class="ft-col"><h5>Literature</h5><ul><li><a href="#">Ramayana</a></li><li><a href="#">Mahabharata</a></li><li><a href="#">Puranas</a></li><li><a href="#">Kavya</a></li></ul></div>
+  </div>
+  <div class="ft-bottom"><span>© 2024 Shastra · All texts in public domain</span><span class="ft-om">ॐ</span><span>Powered by AI · Complete verse access</span></div>
+</footer>
+
+<!-- ═══════ READER ═══════ -->
+<div class="reader" id="reader">
+  <div class="reader-topbar">
+    <button class="back-btn" onclick="closeReader()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Library
+    </button>
+    <div class="rdr-text-info">
+      <div class="rdr-text-name" id="rdrName"></div>
+      <span class="rdr-text-dev" id="rdrDev"></span>
+    </div>
+    <div class="rdr-controls">
+      <input class="rdr-search" type="text" placeholder="Jump to verse…" id="rdrSearch" onkeydown="if(event.key==='Enter')jumpToVerseBySearch()">
+    </div>
+  </div>
+  <div class="lang-bar">
+    <button class="lang-btn on" onclick="setLang('sanskrit',this)">Sanskrit</button>
+    <button class="lang-btn" onclick="setLang('hindi',this)">Hindi</button>
+    <button class="lang-btn" onclick="setLang('english',this)">English</button>
+    <button class="lang-btn" onclick="setLang('all',this)">All Three</button>
+  </div>
+  <div class="reader-body">
+    <div class="rdr-sidebar" id="rdrSidebar"></div>
+    <div class="rdr-main" id="rdrMain"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════
+// TEXTS METADATA
+// ═══════════════════════════════════════════════════════
+const TEXTS = [
+  {id:'rigveda',tag:'Veda',name:'Rigveda',dev:'ऋग्वेद',period:'c. 1500–1200 BCE',lang:'Vedic Sanskrit',totalVerses:'10,552',
+   desc:'The oldest of the four Vedas and one of the oldest extant texts in any Indo-European language. It contains 1,028 hymns (suktas) organized into ten mandalas (books), praising deities like Agni, Indra, Varuna, and Surya. Composed by ancient seers (Rishis), it includes the Nasadiya Sukta (Creation Hymn), Purusha Sukta, and the sacred Gayatri Mantra.',
+   chapters:[{id:'m1',label:'Mandala 1',verses:191},{id:'m2',label:'Mandala 2',verses:43},{id:'m3',label:'Mandala 3',verses:62},{id:'m4',label:'Mandala 4',verses:58},{id:'m5',label:'Mandala 5',verses:87},{id:'m6',label:'Mandala 6',verses:75},{id:'m7',label:'Mandala 7',verses:104},{id:'m8',label:'Mandala 8',verses:103},{id:'m9',label:'Mandala 9',verses:114},{id:'m10',label:'Mandala 10',verses:191}]},
+  {id:'samaveda',tag:'Veda',name:'Samaveda',dev:'सामवेद',period:'c. 1200–1000 BCE',lang:'Vedic Sanskrit',totalVerses:'1,875',
+   desc:'The Veda of melodies — a liturgical collection of hymns meant to be sung during Soma rituals. Most of its 1,549 verses are drawn from the Rigveda, but set to musical notations. It is the foundation of Indian classical music. The Chandogya Upanishad belongs to this tradition.',
+   chapters:[{id:'p1',label:'Purvarchika (First Chapter)',verses:650},{id:'p2',label:'Uttararchika (Second Chapter)',verses:1225}]},
+  {id:'yajurveda',tag:'Veda',name:'Yajurveda',dev:'यजुर्वेद',period:'c. 1100–800 BCE',lang:'Vedic Sanskrit',totalVerses:'~1,875',
+   desc:'The Veda of ritual formulas — a collection of prose mantras used by the Adhvaryu priest during Vedic sacrifices. It exists in two recensions: the Krishna (Black) Yajurveda and the Shukla (White) Yajurveda. The famous Shatarudriya and Purusha Sukta appear here. The Brihadaranyaka and Isha Upanishads belong to this tradition.',
+   chapters:[{id:'k1',label:'Kandas 1–10',verses:468},{id:'k2',label:'Kandas 11–20',verses:468},{id:'k3',label:'Kandas 21–40',verses:472}]},
+  {id:'atharvaveda',tag:'Veda',name:'Atharvaveda',dev:'अथर्ववेद',period:'c. 1200–1000 BCE',lang:'Vedic Sanskrit',totalVerses:'~5,977',
+   desc:'The fourth Veda, named after the sage Atharvan. Unlike the other three, it deals with everyday concerns — healing, love, prosperity, curses, and cosmological philosophy. It includes the celebrated Prithvi Sukta (Earth Hymn — AV 12.1) and extensive medical hymns that formed the basis of Ayurveda.',
+   chapters:[{id:'b1',label:'Books 1–5',verses:1200},{id:'b2',label:'Books 6–10',verses:1200},{id:'b3',label:'Books 11–15',verses:1200},{id:'b4',label:'Books 16–20',verses:1377}]},
+  {id:'rigveda_upanishad',tag:'Upanishad',name:'Aitareya Upanishad',dev:'ऐतरेय उपनिषद्',period:'c. 600 BCE',lang:'Vedic Sanskrit',totalVerses:'33',
+   desc:'One of the mukhya (principal) Upanishads, belonging to the Rigveda tradition. It describes the creation of the universe from the self (Atman), the birth of the world, and the nature of consciousness. Adi Shankaracharya wrote a celebrated commentary on it.',
+   chapters:[{id:'a1',label:'Adhyaya 1',verses:3},{id:'a2',label:'Adhyaya 2',verses:4},{id:'a3',label:'Adhyaya 3',verses:2}]},
+  {id:'isha_upanishad',tag:'Upanishad',name:'Isha Upanishad',dev:'ईशोपनिषद्',period:'c. 600 BCE',lang:'Vedic Sanskrit',totalVerses:'18',
+   desc:'The shortest of the principal Upanishads — 18 verses of extraordinary depth. Embedded in the Shukla Yajurveda, it teaches the unity of God, self, and world, the reconciliation of action and knowledge, and the vision of the divine in all beings. Mahatma Gandhi considered it the most important of all Upanishads.',
+   chapters:[{id:'all',label:'All 18 Verses',verses:18}]},
+  {id:'kena_upanishad',tag:'Upanishad',name:'Kena Upanishad',dev:'केनोपनिषद्',period:'c. 700 BCE',lang:'Vedic Sanskrit',totalVerses:'34',
+   desc:'Belonging to the Samaveda tradition, the Kena Upanishad takes its name from its opening word (kena — by whom?). It explores the nature of Brahman as the source of all thought, speech, sight, and hearing — beyond the reach of the senses. It includes the parable of the humbling of the gods.',
+   chapters:[{id:'k1',label:'Kanda 1',verses:8},{id:'k2',label:'Kanda 2',verses:5},{id:'k3',label:'Kanda 3',verses:12},{id:'k4',label:'Kanda 4',verses:9}]},
+  {id:'katha_upanishad',tag:'Upanishad',name:'Katha Upanishad',dev:'कठोपनिषद्',period:'c. 600 BCE',lang:'Vedic Sanskrit',totalVerses:'119',
+   desc:'One of the most beloved Upanishads — a dialogue between the boy Nachiketa and Yama, the god of death. Nachiketa asks Yama to reveal the secret of what lies after death. Yama, reluctant at first, ultimately teaches the immortality of the Atman. The teaching of the "chariot" metaphor for the self is world-famous.',
+   chapters:[{id:'a1v1',label:'Adhyaya 1, Valli 1',verses:29},{id:'a1v2',label:'Adhyaya 1, Valli 2',verses:25},{id:'a1v3',label:'Adhyaya 1, Valli 3',verses:17},{id:'a2v1',label:'Adhyaya 2, Valli 1',verses:15},{id:'a2v2',label:'Adhyaya 2, Valli 2',verses:15},{id:'a2v3',label:'Adhyaya 2, Valli 3',verses:18}]},
+  {id:'chandogya',tag:'Upanishad',name:'Chandogya Upanishad',dev:'छान्दोग्य उपनिषद्',period:'c. 800–600 BCE',lang:'Vedic Sanskrit',totalVerses:'~7,357',
+   desc:'One of the largest and oldest Upanishads, belonging to the Samaveda. Contains the teaching of "Tat Tvam Asi" (That Thou Art), the parable of salt dissolved in water, and the famous instruction of Uddalaka Aruni to his son Svetaketu. The story of Satyakama Jabala illustrates truth-seeking as the highest dharma.',
+   chapters:[{id:'p1',label:'Prapathaka 1',verses:13},{id:'p2',label:'Prapathaka 2',verses:24},{id:'p3',label:'Prapathaka 3',verses:19},{id:'p4',label:'Prapathaka 4',verses:17},{id:'p5',label:'Prapathaka 5',verses:24},{id:'p6',label:'Prapathaka 6',verses:16},{id:'p7',label:'Prapathaka 7',verses:26},{id:'p8',label:'Prapathaka 8',verses:15}]},
+  {id:'brihadaranyaka',tag:'Upanishad',name:'Brihadaranyaka Upanishad',dev:'बृहदारण्यक उपनिषद्',period:'c. 900–600 BCE',lang:'Vedic Sanskrit',totalVerses:'~7,000',
+   desc:'The longest and one of the oldest Upanishads, containing the dialogues of the great sage Yajnavalkya. Features Gargi Vachaknavi — one of the first known female philosophers — debating Yajnavalkya. Contains the Mahavakya "Aham Brahmasmi" and the prayer "Asato Ma Sad Gamaya". Belongs to the Shukla Yajurveda.',
+   chapters:[{id:'a1',label:'Adhyaya 1',verses:6},{id:'a2',label:'Adhyaya 2',verses:6},{id:'a3',label:'Adhyaya 3',verses:9},{id:'a4',label:'Adhyaya 4',verses:6},{id:'a5',label:'Adhyaya 5',verses:15},{id:'a6',label:'Adhyaya 6',verses:5}]},
+  {id:'mundaka',tag:'Upanishad',name:'Mundaka Upanishad',dev:'मुण्डक उपनिषद्',period:'c. 500 BCE',lang:'Vedic Sanskrit',totalVerses:'64',
+   desc:'Belonging to the Atharvaveda, the Mundaka Upanishad distinguishes between "higher knowledge" (para vidya — direct experience of Brahman) and "lower knowledge" (apara vidya — all other learning). Famous for the metaphor of two birds on a tree: one eating fruits (the individual self) and one watching silently (the Atman).',
+   chapters:[{id:'m1k1',label:'Mundaka 1, Khanda 1',verses:9},{id:'m1k2',label:'Mundaka 1, Khanda 2',verses:13},{id:'m2k1',label:'Mundaka 2, Khanda 1',verses:10},{id:'m2k2',label:'Mundaka 2, Khanda 2',verses:11},{id:'m3k1',label:'Mundaka 3, Khanda 1',verses:10},{id:'m3k2',label:'Mundaka 3, Khanda 2',verses:11}]},
+  {id:'mandukya',tag:'Upanishad',name:'Mandukya Upanishad',dev:'माण्डूक्य उपनिषद्',period:'c. 200 BCE',lang:'Vedic Sanskrit',totalVerses:'12',
+   desc:'The shortest of the principal Upanishads — just 12 verses — yet considered the most profound. It analyzes the four states of consciousness: waking (jagrat), dreaming (svapna), deep sleep (sushupti), and turiya (the fourth transcendent state). The syllable OM is analyzed as encompassing all of consciousness.',
+   chapters:[{id:'all',label:'All 12 Verses',verses:12}]},
+  {id:'bhagavad_gita',tag:'Epic',name:'Bhagavad Gita',dev:'भगवद्गीता',period:'c. 200 BCE–200 CE',lang:'Epic Sanskrit',totalVerses:'700',
+   desc:'The 700-verse dialogue between the warrior Arjuna and his charioteer Krishna on the battlefield of Kurukshetra, embedded in the Mahabharata. Covering karma yoga (path of action), jnana yoga (path of knowledge), and bhakti yoga (path of devotion), it is the most widely read and commented-upon text in all of Indian philosophy.',
+   chapters:[{id:'c1',label:'Chapter 1: Arjuna Vishada Yoga',verses:47},{id:'c2',label:'Chapter 2: Sankhya Yoga',verses:72},{id:'c3',label:'Chapter 3: Karma Yoga',verses:43},{id:'c4',label:'Chapter 4: Jnana Karma Sanyasa Yoga',verses:42},{id:'c5',label:'Chapter 5: Karma Sanyasa Yoga',verses:29},{id:'c6',label:'Chapter 6: Dhyana Yoga',verses:47},{id:'c7',label:'Chapter 7: Jnana Vijnana Yoga',verses:30},{id:'c8',label:'Chapter 8: Akshara Brahma Yoga',verses:28},{id:'c9',label:'Chapter 9: Raja Vidya Raja Guhya Yoga',verses:34},{id:'c10',label:'Chapter 10: Vibhuti Yoga',verses:42},{id:'c11',label:'Chapter 11: Vishwaroopa Darshana Yoga',verses:55},{id:'c12',label:'Chapter 12: Bhakti Yoga',verses:20},{id:'c13',label:'Chapter 13: Kshetra Kshetrajna Vibhaga Yoga',verses:34},{id:'c14',label:'Chapter 14: Gunatraya Vibhaga Yoga',verses:27},{id:'c15',label:'Chapter 15: Purushottama Yoga',verses:20},{id:'c16',label:'Chapter 16: Daivasura Sampad Vibhaga Yoga',verses:24},{id:'c17',label:'Chapter 17: Shraddhatraya Vibhaga Yoga',verses:28},{id:'c18',label:'Chapter 18: Moksha Sanyasa Yoga',verses:78}]},
+  {id:'ramayana',tag:'Epic',name:'Ramayana',dev:'रामायण',period:'c. 500–100 BCE',lang:'Sanskrit',totalVerses:'~24,000',
+   desc:'Attributed to the sage Valmiki — the "Adi Kavi" (first poet) — the Ramayana follows Prince Rama of Ayodhya through exile, the abduction of his wife Sita by the demon Ravana, and his ultimate triumph. In seven books (Kandas), it established the foundations of Sanskrit poetry and shaped the ethical imagination of South and Southeast Asia.',
+   chapters:[{id:'k1',label:'Bala Kanda (Childhood)',verses:3000},{id:'k2',label:'Ayodhya Kanda (Ayodhya)',verses:4000},{id:'k3',label:'Aranya Kanda (Forest)',verses:3000},{id:'k4',label:'Kishkindha Kanda (Kishkindha)',verses:2500},{id:'k5',label:'Sundara Kanda (Beautiful)',verses:2900},{id:'k6',label:'Yuddha Kanda (War)',verses:5700},{id:'k7',label:'Uttara Kanda (Aftermath)',verses:3200}]},
+  {id:'mahabharata',tag:'Epic',name:'Mahabharata',dev:'महाभारत',period:'c. 400 BCE–400 CE',lang:'Epic Sanskrit',totalVerses:'~100,000',
+   desc:'The longest epic poem in world literature — 1.8 million words — attributed to the sage Vyasa. It tells the story of the dynastic struggle between the Pandavas and Kauravas, culminating in the Kurukshetra War. Contains within it the Bhagavad Gita, the Vishnu Sahasranama, the Nala-Damayanti story, and vast philosophical and moral discourses.',
+   chapters:[{id:'p01',label:'1. Adi Parva',verses:8884},{id:'p02',label:'2. Sabha Parva',verses:2511},{id:'p03',label:'3. Vana Parva',verses:11664},{id:'p04',label:'4. Virata Parva',verses:2050},{id:'p05',label:'5. Udyoga Parva',verses:6698},{id:'p06',label:'6. Bhishma Parva',verses:5884},{id:'p07',label:'7. Drona Parva',verses:8909},{id:'p08',label:'8. Karna Parva',verses:4964},{id:'p09',label:'9. Shalya Parva',verses:3220},{id:'p10',label:'10. Sauptika Parva',verses:870},{id:'p11',label:'11. Stri Parva',verses:775},{id:'p12',label:'12. Shanti Parva',verses:14525},{id:'p13',label:'13. Anushasana Parva',verses:8000},{id:'p14',label:'14. Ashvamedhika Parva',verses:3320},{id:'p15',label:'15. Ashramavasika Parva',verses:1506},{id:'p16',label:'16. Mausala Parva',verses:300},{id:'p17',label:'17. Mahaprasthanika Parva',verses:120},{id:'p18',label:'18. Svargarohanika Parva',verses:200}]},
+  {id:'yoga_sutras',tag:'Sutra',name:'Yoga Sutras of Patanjali',dev:'योगसूत्र',period:'c. 400 CE',lang:'Sanskrit',totalVerses:'196',
+   desc:'Compiled by the sage Patanjali, the 196 aphorisms of the Yoga Sutras define the eightfold (Ashtanga) path to liberation. Organized in four chapters (Samadhi Pada, Sadhana Pada, Vibhuti Pada, Kaivalya Pada), they systematize all of yoga from ethics and posture to breath, meditation, and final liberation.',
+   chapters:[{id:'s1',label:'Samadhi Pada (On Contemplation)',verses:51},{id:'s2',label:'Sadhana Pada (On Practice)',verses:55},{id:'s3',label:'Vibhuti Pada (On Supernatural Powers)',verses:56},{id:'s4',label:'Kaivalya Pada (On Liberation)',verses:34}]},
+  {id:'narada_bhakti',tag:'Sutra',name:'Narada Bhakti Sutras',dev:'नारद भक्तिसूत्र',period:'c. 700–900 CE',lang:'Sanskrit',totalVerses:'84',
+   desc:'Attributed to the divine sage Narada, these 84 sutras define the nature, path, and supreme goal of bhakti (devotion). They describe various forms of love for God, the obstacles to devotion, and the bliss that comes from pure love. A foundational text for all Vaishnava and bhakti traditions.',
+   chapters:[{id:'a1',label:'Aphorisms 1–20',verses:20},{id:'a2',label:'Aphorisms 21–40',verses:20},{id:'a3',label:'Aphorisms 41–60',verses:20},{id:'a4',label:'Aphorisms 61–84',verses:24}]},
+  {id:'brahma_sutras',tag:'Sutra',name:'Brahma Sutras',dev:'ब्रह्मसूत्र',period:'c. 200 BCE–200 CE',lang:'Sanskrit',totalVerses:'555',
+   desc:'Composed by Badarayana (also identified with Vyasa), the Brahma Sutras systematize the teachings of the Upanishads into 555 aphorisms across four chapters (Adhyayas). They are one of the three foundational texts (Prasthanatrayi) of Vedanta, along with the Upanishads and the Bhagavad Gita.',
+   chapters:[{id:'a1',label:'Adhyaya 1: Samanvaya (Harmony)',verses:134},{id:'a2',label:'Adhyaya 2: Avirodha (Non-conflict)',verses:157},{id:'a3',label:'Adhyaya 3: Sadhana (Means)',verses:185},{id:'a4',label:'Adhyaya 4: Phala (Fruit)',verses:79}]},
+  {id:'bhagavata_purana',tag:'Purana',name:'Bhagavata Purana',dev:'भागवत पुराण',period:'c. 500–1000 CE',lang:'Sanskrit',totalVerses:'~18,000',
+   desc:'The Srimad Bhagavatam — supreme among the Puranas for devotees of Vishnu/Krishna. Told by the sage Shuka to the dying King Parikshit in seven days, its twelve books cover cosmology, creation, royal genealogies, and above all the divine play (lila) of Vishnu\'s avatars. The tenth book on Krishna\'s life is perhaps the most widely loved text in all of Indian literature.',
+   chapters:[{id:'sk1',label:'Skandha 1',verses:211},{id:'sk2',label:'Skandha 2',verses:123},{id:'sk3',label:'Skandha 3',verses:422},{id:'sk4',label:'Skandha 4',verses:487},{id:'sk5',label:'Skandha 5',verses:258},{id:'sk6',label:'Skandha 6',verses:360},{id:'sk7',label:'Skandha 7',verses:312},{id:'sk8',label:'Skandha 8',verses:327},{id:'sk9',label:'Skandha 9',verses:323},{id:'sk10',label:'Skandha 10 (Krishna Lila)',verses:3943},{id:'sk11',label:'Skandha 11',verses:464},{id:'sk12',label:'Skandha 12',verses:321}]},
+  {id:'vishnu_purana',tag:'Purana',name:'Vishnu Purana',dev:'विष्णु पुराण',period:'c. 400 CE',lang:'Sanskrit',totalVerses:'~7,000',
+   desc:'One of the eighteen Mahapuranas, the Vishnu Purana is a encyclopedic text covering cosmology, creation myths, the dynasties of kings, and devotional teachings. It includes the stories of Prahlada, Dhruva, and detailed descriptions of Vishnu\'s cosmic form. H.H. Wilson produced the first English translation in 1840.',
+   chapters:[{id:'a1',label:'Amsha 1',verses:1200},{id:'a2',label:'Amsha 2',verses:800},{id:'a3',label:'Amsha 3',verses:900},{id:'a4',label:'Amsha 4',verses:1500},{id:'a5',label:'Amsha 5 (Krishna)',verses:1800},{id:'a6',label:'Amsha 6',verses:800}]},
+  {id:'shiva_purana',tag:'Purana',name:'Shiva Purana',dev:'शिव पुराण',period:'c. 600–900 CE',lang:'Sanskrit',totalVerses:'~24,000',
+   desc:'One of the eighteen Mahapuranas devoted to Lord Shiva. It consists of seven Samhitas covering the nature and attributes of Shiva, the stories of his devotees, his marriages (to Sati and Parvati), and the philosophical meanings of Shaivite rituals and symbols. It is the most authoritative Shaiva scripture.',
+   chapters:[{id:'v1',label:'Vidyeshvara Samhita',verses:2000},{id:'v2',label:'Rudra Samhita',verses:5000},{id:'v3',label:'Shataraudra Samhita',verses:3000},{id:'v4',label:'Kotirudra Samhita',verses:4000},{id:'v5',label:'Uma Samhita',verses:3000},{id:'v6',label:'Kailasha Samhita',verses:2000},{id:'v7',label:'Vayaviya Samhita',verses:5000}]},
+  {id:'meghaduta',tag:'Poetry',name:'Meghaduta',dev:'मेघदूत',period:'c. 4th–5th CE',lang:'Classical Sanskrit',totalVerses:'115',
+   desc:'Kalidasa\'s lyrical masterpiece — a Yaksha banished from his wife implores a passing monsoon cloud to carry his love message to her in Alaka near the Himalayas. Composed in the Mandakranta meter (the meter of longing), the poem traces a gorgeous geographical journey across India while meditating on love, separation, and nature.',
+   chapters:[{id:'p1',label:'Purva-Megha (The Cloud\'s Journey)',verses:66},{id:'p2',label:'Uttara-Megha (The Message)',verses:49}]},
+  {id:'kumarasambhava',tag:'Poetry',name:'Kumarasambhava',dev:'कुमारसम्भव',period:'c. 4th–5th CE',lang:'Classical Sanskrit',totalVerses:'~1,000+',
+   desc:'Kalidasa\'s epic poem on the birth of Kumara (Kartikeya/Skanda), the war god who will defeat the demon Taraka. It begins with the ascetic penance of Parvati to win Shiva as her husband, the burning of Kama (the god of desire) by Shiva\'s third eye, and the eventual divine union. Famous for its exquisite descriptions of nature and divine beauty.',
+   chapters:[{id:'s1',label:'Sarga 1: Uma\'s Penance',verses:59},{id:'s2',label:'Sarga 2: The Petition',verses:61},{id:'s3',label:'Sarga 3: Kama\'s Campaign',verses:79},{id:'s4',label:'Sarga 4: Kama\'s Burning',verses:45},{id:'s5',label:'Sarga 5: Uma\'s Penance',verses:86},{id:'s6',label:'Sarga 6: Shiva\'s Marriage',verses:95},{id:'s7',label:'Sarga 7: The Bridal Night',verses:95}]},
+  {id:'abhijnana_shakuntalam',tag:'Poetry',name:'Abhijnanashakuntalam',dev:'अभिज्ञानशाकुन्तलम्',period:'c. 4th–5th CE',lang:'Classical Sanskrit',totalVerses:'~700 (prose+verse)',
+   desc:'Kalidasa\'s most celebrated drama — the recognition of Shakuntala. King Dushyanta falls in love with and secretly marries the forest girl Shakuntala. Cursed to be forgotten, she is rejected by him; years later a ring found in a fish\'s belly restores his memory. Goethe famously said of this play that it contained heaven, earth, and eternity.',
+   chapters:[{id:'a1',label:'Act 1',verses:100},{id:'a2',label:'Act 2',verses:80},{id:'a3',label:'Act 3',verses:100},{id:'a4',label:'Act 4',verses:120},{id:'a5',label:'Act 5',verses:90},{id:'a6',label:'Act 6',verses:80},{id:'a7',label:'Act 7',verses:130}]},
+];
+
+// ═══════════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════════
+let currentText = null;
+let currentChapter = null;
+let currentVerseNum = 1;
+let activeLang = 'sanskrit';
+let verseCache = {};
+let loadingVerse = false;
+
+// ═══════════════════════════════════════════════════════
+// RENDER LIBRARY
+// ═══════════════════════════════════════════════════════
+function renderTexts(data){
+  document.getElementById('textsGrid').innerHTML = data.map((t,i)=>`
+    <div class="text-card" onclick="openReader('${t.id}')">
+      <div class="tc-verse-count">${t.totalVerses}</div>
+      <div class="tc-tag">${t.tag}</div>
+      <div class="tc-name">${t.name}</div>
+      <span class="tc-dev">${t.dev}</span>
+      <p class="tc-desc">${t.desc.substring(0,180)}…</p>
+      <div class="tc-meta">
+        <span><strong>Period</strong> ${t.period}</span>
+        <span><strong>Verses</strong> ${t.totalVerses}</span>
+      </div>
+      <div class="tc-btn">Read All Verses →</div>
+    </div>
+  `).join('');
+}
+
+function filterTexts(tag, btn){
+  const f = tag==='all' ? TEXTS : TEXTS.filter(t=>t.tag===tag);
+  renderTexts(f);
+  document.querySelectorAll('.lib-filter').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('library').scrollIntoView({behavior:'smooth'});
+}
+
+function handleSearch(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  if(!q){renderTexts(TEXTS);return;}
+  renderTexts(TEXTS.filter(t=>
+    t.name.toLowerCase().includes(q)||
+    t.dev.includes(q)||
+    t.desc.toLowerCase().includes(q)||
+    t.tag.toLowerCase().includes(q)
+  ));
+}
+
+function setSearch(term){
+  document.getElementById('searchInput').value = term;
+  handleSearch();
+  document.getElementById('library').scrollIntoView({behavior:'smooth'});
+}
+
+// ═══════════════════════════════════════════════════════
+// READER
+// ═══════════════════════════════════════════════════════
+function openReader(id){
+  currentText = TEXTS.find(t=>t.id===id);
+  if(!currentText) return;
+  currentChapter = currentText.chapters[0];
+  currentVerseNum = 1;
+  activeLang = 'sanskrit';
+  verseCache = {};
+
+  document.getElementById('rdrName').textContent = currentText.name;
+  document.getElementById('rdrDev').textContent = currentText.dev;
+
+  buildSidebar();
+  renderOverview();
+  resetLangBtns();
+  document.getElementById('reader').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeReader(){
+  document.getElementById('reader').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+function buildSidebar(){
+  const sb = document.getElementById('rdrSidebar');
+  sb.innerHTML = `
+    <div class="sidebar-info">
+      <h4>${currentText.tag}</h4>
+      <p>${currentText.totalVerses} verses total</p>
+    </div>
+    <div class="jump-wrap">
+      <label>Jump to verse</label>
+      <div class="jump-input">
+        <input type="number" id="jumpNum" placeholder="e.g. 47" min="1">
+        <button onclick="jumpToVerseNum()">Go</button>
+      </div>
+    </div>
+    ${currentText.chapters.map((ch,ci)=>`
+      <div class="ch-header" onclick="toggleChapter('ch-${ci}','chv-${ci}')">
+        <span>${ch.label}</span>
+        <span style="color:rgba(201,146,42,0.4);font-size:0.65rem;">${ch.verses} ▾</span>
+      </div>
+      <div id="chv-${ci}" style="display:${ci===0?'block':'none'}">
+        ${Array.from({length:Math.min(ch.verses,50)},(_,vi)=>vi+1).map(v=>`
+          <div class="verse-item ${ci===0&&v===1?'active':''}" id="si-${ci}-${v}" onclick="loadVerse(${ci},${v})">
+            <span class="vi-num">${v}</span>
+            <span class="vi-preview">${ch.label} · Verse ${v}</span>
+          </div>
+        `).join('')}
+        ${ch.verses>50?`<div style="padding:0.7rem 1.5rem;font-size:0.72rem;color:rgba(139,110,82,0.5);letter-spacing:0.1em;">Use "Jump to verse" for verse 51–${ch.verses}</div>`:''}
+      </div>
+    `).join('')}
+  `;
+}
+
+function toggleChapter(headId, bodyId){
+  const body = document.getElementById(bodyId);
+  body.style.display = body.style.display==='none'?'block':'none';
+}
+
+function renderOverview(){
+  document.getElementById('rdrMain').innerHTML = `
+    <div class="text-overview">
+      <div class="ov-title">${currentText.name} · <em>${currentText.dev}</em></div>
+      <p class="ov-desc">${currentText.desc}</p>
+      <div class="ov-facts">
+        <div class="ov-fact"><label>Period</label><span>${currentText.period}</span></div>
+        <div class="ov-fact"><label>Language</label><span>${currentText.lang}</span></div>
+        <div class="ov-fact"><label>Total Verses</label><span>${currentText.totalVerses}</span></div>
+        <div class="ov-fact"><label>Category</label><span>${currentText.tag}</span></div>
+        <div class="ov-fact"><label>Chapters / Books</label><span>${currentText.chapters.length}</span></div>
+      </div>
+    </div>
+    <div id="verseArea"><div style="text-align:center;padding:4rem;color:var(--muted);font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-style:italic;">Select any verse from the sidebar to read it in Sanskrit, Hindi & English</div></div>
+  `;
+  // Auto-load first verse
+  setTimeout(()=>loadVerse(0,1),200);
+}
+
+function loadVerse(chapterIndex, verseNum){
+  currentChapter = currentText.chapters[chapterIndex];
+  currentVerseNum = verseNum;
+
+  // Update sidebar active state
+  document.querySelectorAll('.verse-item').forEach(el=>el.classList.remove('active'));
+  const si = document.getElementById(`si-${chapterIndex}-${verseNum}`);
+  if(si){ si.classList.add('active'); si.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+
+  const cacheKey = `${currentText.id}::${currentChapter.id}::${verseNum}::${activeLang}`;
+  if(verseCache[cacheKey]){
+    renderVerseData(verseCache[cacheKey], chapterIndex, verseNum);
+    return;
+  }
+
+  showLoading(chapterIndex, verseNum);
+  fetchVerse(chapterIndex, verseNum);
+}
+
+function showLoading(ci, v){
+  const area = document.getElementById('verseArea');
+  if(!area) return;
+  area.innerHTML = `
+    <div class="verse-loading">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Retrieving ${currentText.chapters[ci].label} · Verse ${v}</div>
+      <div class="loading-dev">श्लोक लोड हो रहा है…</div>
+    </div>
+  `;
+}
+
+async function fetchVerse(chapterIndex, verseNum){
+  if(loadingVerse) return;
+  loadingVerse = true;
+  const ch = currentText.chapters[chapterIndex];
+  const prompt = buildPrompt(chapterIndex, verseNum);
+
+  try {
+    const resp = await fetch('/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        system:`You are a Sanskrit scholar specializing in ancient Indian texts. You provide accurate, scholarly verse content from ancient Indian scriptures. Always respond ONLY with a valid JSON object, no markdown, no backticks, no preamble.`,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await resp.json();
+    const raw = data.content?.map(b=>b.text||'').join('');
+    const clean = raw.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+    const cacheKey = `${currentText.id}::${ch.id}::${verseNum}::${activeLang}`;
+    verseCache[cacheKey] = parsed;
+    renderVerseData(parsed, chapterIndex, verseNum);
+  } catch(e){
+    document.getElementById('verseArea').innerHTML = `
+      <div class="verse-error">
+        <h3>Could not load verse</h3>
+        <p>Please try again or select another verse.</p>
+        <button onclick="fetchVerse(${chapterIndex},${verseNum})" style="margin-top:1.5rem;padding:0.6rem 1.5rem;border:1px solid rgba(201,146,42,0.3);background:transparent;color:var(--gold);cursor:pointer;font-family:'Crimson Pro',serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase;">Retry</button>
+      </div>`;
+  }
+  loadingVerse = false;
+}
+
+function buildPrompt(ci, verseNum){
+  const ch = currentText.chapters[ci];
+  return `Provide the EXACT text of verse/shloka number ${verseNum} from "${ch.label}" of the ${currentText.name} (${currentText.dev}).
+
+Return ONLY this JSON object (no markdown, no explanation):
+{
+  "verseRef": "exact reference like 1.1.1 or Chapter 2, Verse 47",
+  "sanskrit": "original Sanskrit/Vedic text in Devanagari script, with proper line breaks using \\n",
+  "transliteration": "IAST or readable Roman transliteration with \\n for line breaks",
+  "hindi": "accurate Hindi translation in Devanagari, with \\n for line breaks",
+  "hindi_meaning": "deeper explanation in Hindi (2-3 sentences) of the verse's meaning",
+  "english": "accurate English translation, with \\n for line breaks",
+  "english_note": "scholarly commentary in English (3-5 sentences) explaining context, significance, and interpretation of this verse"
+}
+
+Be accurate and scholarly. Use the actual verse text, not a paraphrase. For the ${currentText.name}, this is verse ${verseNum} of ${ch.label}.`;
+}
+
+function renderVerseData(data, ci, v){
+  const ch = currentText.chapters[ci];
+  const area = document.getElementById('verseArea');
+  if(!area) return;
+
+  const fmt = s => (s||'').replace(/\n/g,'<br>');
+
+  area.innerHTML = `
+    <div class="verse-card">
+      <div class="vc-header">
+        <div class="vc-num">${String(v).padStart(2,'0')}</div>
+        <div>
+          <div class="vc-ref">${currentText.name} · ${ch.label}</div>
+          <div class="vc-subref">${data.verseRef||''}</div>
+        </div>
+      </div>
+
+      <!-- Sanskrit Pane -->
+      <div class="verse-pane ${activeLang==='sanskrit'?'active':''}" id="pane-sanskrit">
+        <div class="lang-section">
+          <div class="lang-label">Sanskrit · संस्कृत</div>
+          <div class="v-sanskrit">${fmt(data.sanskrit)}</div>
+          <div class="v-translit">${fmt(data.transliteration)}</div>
+        </div>
+      </div>
+
+      <!-- Hindi Pane -->
+      <div class="verse-pane ${activeLang==='hindi'?'active':''}" id="pane-hindi">
+        <div class="lang-section">
+          <div class="lang-label">Hindi · हिन्दी</div>
+          <div class="v-hindi">${fmt(data.hindi)}</div>
+          <div class="v-hindi-meaning">${data.hindi_meaning||''}</div>
+        </div>
+      </div>
+
+      <!-- English Pane -->
+      <div class="verse-pane ${activeLang==='english'?'active':''}" id="pane-english">
+        <div class="lang-section">
+          <div class="lang-label">English</div>
+          <div class="v-english">${fmt(data.english)}</div>
+          <div class="v-note">${data.english_note||''}</div>
+        </div>
+      </div>
+
+      <!-- All Three Pane -->
+      <div class="verse-pane ${activeLang==='all'?'active':''}" id="pane-all">
+        <div class="triple-card">
+          <div class="triple-card-head">${currentText.name} · ${ch.label} · ${data.verseRef||'Verse '+v}</div>
+          <div class="triple-row">
+            <div class="triple-row-lang">Sanskrit · संस्कृत</div>
+            <div class="v-sanskrit" style="font-size:1.3rem;">${fmt(data.sanskrit)}</div>
+            <div class="v-translit" style="font-size:0.95rem;margin-top:0.6rem;">${fmt(data.transliteration)}</div>
+          </div>
+          <div class="triple-row">
+            <div class="triple-row-lang">Hindi · हिन्दी</div>
+            <div class="v-hindi" style="font-size:1.05rem;">${fmt(data.hindi)}</div>
+            <div class="v-hindi-meaning" style="font-size:0.88rem;margin-top:0.6rem;">${data.hindi_meaning||''}</div>
+          </div>
+          <div class="triple-row">
+            <div class="triple-row-lang">English</div>
+            <div class="v-english" style="font-size:1.2rem;">${fmt(data.english)}</div>
+            <div class="v-note" style="font-size:0.88rem;">${data.english_note||''}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav buttons -->
+      <div style="display:flex;gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(201,146,42,0.1);">
+        ${v>1?`<button onclick="loadVerse(${ci},${v-1})" style="padding:0.7rem 1.5rem;border:1px solid rgba(201,146,42,0.25);background:transparent;color:var(--gold);cursor:pointer;font-family:'Crimson Pro',serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;transition:all 0.3s;" onmouseover="this.style.background='rgba(201,146,42,0.1)'" onmouseout="this.style.background='transparent'">← Previous Verse</button>`:''}
+        ${v<ch.verses?`<button onclick="loadVerse(${ci},${v+1})" style="padding:0.7rem 1.5rem;border:1px solid rgba(201,146,42,0.25);background:rgba(201,146,42,0.08);color:var(--gold-light);cursor:pointer;font-family:'Crimson Pro',serif;font-size:0.8rem;letter-spacing:0.2em;text-transform:uppercase;transition:all 0.3s;margin-left:auto;" onmouseover="this.style.background='rgba(201,146,42,0.18)'" onmouseout="this.style.background='rgba(201,146,42,0.08)'">Next Verse →</button>`:''}
+      </div>
+    </div>
+  `;
+}
+
+function setLang(lang, btn){
+  activeLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.verse-pane').forEach(p=>p.classList.remove('active'));
+  const pane = document.getElementById('pane-'+lang);
+  if(pane) pane.classList.add('active');
+}
+
+function resetLangBtns(){
+  activeLang='sanskrit';
+  document.querySelectorAll('.lang-btn').forEach((b,i)=>b.classList.toggle('on',i===0));
+}
+
+function jumpToVerseNum(){
+  const v = parseInt(document.getElementById('jumpNum').value);
+  if(!v||v<1) return;
+  // Find which chapter it belongs to
+  let cumulative=0;
+  for(let ci=0;ci<currentText.chapters.length;ci++){
+    const ch=currentText.chapters[ci];
+    if(v<=cumulative+ch.verses){
+      const localV=v-cumulative;
+      // expand that chapter
+      document.getElementById(`chv-${ci}`).style.display='block';
+      loadVerse(ci,localV);
+      return;
+    }
+    cumulative+=ch.verses;
+  }
+  alert(`Verse ${v} exceeds the total verse count of this text.`);
+}
+
+function jumpToVerseBySearch(){
+  const v = parseInt(document.getElementById('rdrSearch').value);
+  if(!isNaN(v)) { document.getElementById('jumpNum').value=v; jumpToVerseNum(); }
+}
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeReader();});
+
+// Init
+renderTexts(TEXTS);
+</script>
+</body>
+</html>

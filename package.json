@@ -1,0 +1,8 @@
+{
+  "name": "shastra-ancient-texts",
+  "version": "1.0.0",
+  "description": "Shastra — Complete Ancient Indian Texts on Netlify",
+  "dependencies": {
+    "node-fetch": "^2.7.0"
+  }
+}
